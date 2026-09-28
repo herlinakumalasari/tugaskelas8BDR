@@ -1,0 +1,1728 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GOOD DEEDS, GOOD STORIES - SMP Grade 8 English</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+        .bg-gradient-primary {
+            background: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
+        }
+        .bg-gradient-secondary {
+            background: linear-gradient(135deg, #f59e0b 0%, #10b981 100%);
+        }
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px -10px rgba(79, 70, 229, 0.15);
+        }
+        .flip-card {
+            perspective: 1000px;
+        }
+        .flip-card-inner {
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+        .flip-card.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        .flip-card-front, .flip-card-back {
+            backface-visibility: hidden;
+        }
+        .flip-card-back {
+            transform: rotateY(180deg);
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col bg-slate-50">
+
+    <!-- Top Header -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo & Title -->
+                <div class="flex items-center space-x-3 cursor-pointer" onclick="switchTab('home')">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-primary flex items-center justify-center text-white font-extrabold text-xl shadow-md">
+                        <i class="fa-solid fa-heart-handshake"></i>
+                    </div>
+                    <div>
+                        <h1 class="font-extrabold text-slate-800 text-lg leading-tight">GOOD DEEDS, GOOD STORIES</h1>
+                        <p class="text-xs text-indigo-600 font-semibold hidden sm:block">Learn English • Share Kindness • Tell Your Story</p>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation Menu -->
+                <nav class="hidden lg:flex items-center space-x-1 text-sm font-medium">
+                    <button onclick="switchTab('home')" class="nav-btn px-3 py-2 rounded-lg text-slate-600 hover:text-indigo-600 hover:bg-indigo-50 transition" id="nav-home"><i class="fa-solid fa-house mr-1.5"></i>Home</button>
+                    <button onclick="switchTab('recount')" class="nav-btn px-3 py-2 rounded-lg text-slate-600 hover:text-indigo-600 hover:bg-indigo-50 transition" id="nav-recount"><i class="fa-solid fa-book-open mr-1.5"></i>Reading</button>
+                    <button onclick="switchTab('vocab')" class="nav-btn px-3 py-2 rounded-lg text-slate-600 hover:text-indigo-600 hover:bg-indigo-50 transition" id="nav-vocab"><i class="fa-solid fa-layer-group mr-1.5"></i>Vocab</button>
+                    <button onclick="switchTab('past-tense')" class="nav-btn px-3 py-2 rounded-lg text-slate-600 hover:text-indigo-600 hover:bg-indigo-50 transition" id="nav-past-tense"><i class="fa-solid fa-clock-rotate-left mr-1.5"></i>Grammar</button>
+                    <button onclick="switchTab('listening')" class="nav-btn px-3 py-2 rounded-lg text-slate-600 hover:text-indigo-600 hover:bg-indigo-50 transition" id="nav-listening"><i class="fa-solid fa-headphones mr-1.5"></i>Listening</button>
+                    <button onclick="switchTab('speaking')" class="nav-btn px-3 py-2 rounded-lg text-slate-600 hover:text-indigo-600 hover:bg-indigo-50 transition" id="nav-speaking"><i class="fa-solid fa-comments mr-1.5"></i>Speaking</button>
+                    <button onclick="switchTab('story-builder')" class="nav-btn px-3 py-2 rounded-lg text-slate-600 hover:text-indigo-600 hover:bg-indigo-50 transition" id="nav-story-builder"><i class="fa-solid fa-wand-magic-sparkles mr-1.5"></i>Builder</button>
+                    <button onclick="switchTab('writing')" class="nav-btn px-3 py-2 rounded-lg text-slate-600 hover:text-indigo-600 hover:bg-indigo-50 transition" id="nav-writing"><i class="fa-solid fa-pen-nib mr-1.5"></i>Writing</button>
+                    <button onclick="switchTab('quiz')" class="nav-btn px-3 py-2 rounded-lg text-slate-600 hover:text-indigo-600 hover:bg-indigo-50 transition" id="nav-quiz"><i class="fa-solid fa-circle-question mr-1.5"></i>Quiz</button>
+                    <button onclick="switchTab('reflection')" class="nav-btn px-3 py-2 rounded-lg text-slate-600 hover:text-indigo-600 hover:bg-indigo-50 transition" id="nav-reflection"><i class="fa-solid fa-lightbulb mr-1.5"></i>Reflection</button>
+                    <button onclick="switchTab('teacher')" class="nav-btn px-3 py-2 rounded-lg bg-amber-500 text-white font-semibold hover:bg-amber-600 shadow-sm transition" id="nav-teacher"><i class="fa-solid fa-chalkboard-user mr-1.5"></i>Teacher Corner</button>
+                </nav>
+
+                <!-- Student Profile / Mobile Menu Trigger -->
+                <div class="flex items-center space-x-2">
+                    <button onclick="toggleMobileMenu()" class="lg:hidden p-2 rounded-lg text-slate-600 hover:bg-slate-100 focus:outline-none">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Drawer -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-4 space-y-2">
+            <button onclick="switchTab('home')" class="w-full text-left px-3 py-2 rounded-lg text-slate-700 hover:bg-indigo-50 font-medium"><i class="fa-solid fa-house w-6"></i> Home</button>
+            <button onclick="switchTab('recount')" class="w-full text-left px-3 py-2 rounded-lg text-slate-700 hover:bg-indigo-50 font-medium"><i class="fa-solid fa-book-open w-6"></i> Reading Recount</button>
+            <button onclick="switchTab('vocab')" class="w-full text-left px-3 py-2 rounded-lg text-slate-700 hover:bg-indigo-50 font-medium"><i class="fa-solid fa-layer-group w-6"></i> Care Vocabulary</button>
+            <button onclick="switchTab('past-tense')" class="w-full text-left px-3 py-2 rounded-lg text-slate-700 hover:bg-indigo-50 font-medium"><i class="fa-solid fa-clock-rotate-left w-6"></i> Simple Past Tense</button>
+            <button onclick="switchTab('listening')" class="w-full text-left px-3 py-2 rounded-lg text-slate-700 hover:bg-indigo-50 font-medium"><i class="fa-solid fa-headphones w-6"></i> Empathy Listening</button>
+            <button onclick="switchTab('speaking')" class="w-full text-left px-3 py-2 rounded-lg text-slate-700 hover:bg-indigo-50 font-medium"><i class="fa-solid fa-comments w-6"></i> Speaking Challenge</button>
+            <button onclick="switchTab('story-builder')" class="w-full text-left px-3 py-2 rounded-lg text-slate-700 hover:bg-indigo-50 font-medium"><i class="fa-solid fa-wand-magic-sparkles w-6"></i> Story Builder</button>
+            <button onclick="switchTab('writing')" class="w-full text-left px-3 py-2 rounded-lg text-slate-700 hover:bg-indigo-50 font-medium"><i class="fa-solid fa-pen-nib w-6"></i> Write Story</button>
+            <button onclick="switchTab('quiz')" class="w-full text-left px-3 py-2 rounded-lg text-slate-700 hover:bg-indigo-50 font-medium"><i class="fa-solid fa-circle-question w-6"></i> Interactive Quiz</button>
+            <button onclick="switchTab('reflection')" class="w-full text-left px-3 py-2 rounded-lg text-slate-700 hover:bg-indigo-50 font-medium"><i class="fa-solid fa-lightbulb w-6"></i> My Reflection</button>
+            <button onclick="switchTab('teacher')" class="w-full text-left px-3 py-2 rounded-lg bg-amber-500 text-white font-medium"><i class="fa-solid fa-chalkboard-user w-6"></i> Teacher Corner</button>
+        </div>
+    </header>
+
+    <!-- Global Student Info Modal (Prompt on First Visit) -->
+    <div id="student-info-modal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-2xl p-6 sm:p-8 max-w-md w-full shadow-2xl border border-indigo-100 transform transition-all">
+            <div class="text-center mb-6">
+                <div class="w-16 h-16 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center mx-auto mb-3 text-2xl font-bold">
+                    <i class="fa-solid fa-user-graduate"></i>
+                </div>
+                <h3 class="text-xl font-bold text-slate-800">Welcome, Young Kindness Leader!</h3>
+                <p class="text-xs text-slate-500 mt-1">Isi identitasmu sebelum memulai petualangan belajar ini.</p>
+            </div>
+            <form onsubmit="saveStudentInfo(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Nama Lengkap (Full Name)</label>
+                    <input type="text" id="input-student-name" required placeholder="Contoh: Budi Santoso" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none text-sm">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Kelas (Class)</label>
+                    <select id="input-student-class" required class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none text-sm">
+                        <option value="VIII-A">VIII-A</option>
+                        <option value="VIII-B">VIII-B</option>
+                        <option value="VIII-C">VIII-C</option>
+                        <option value="VIII-D">VIII-D</option>
+                        <option value="VIII-E">VIII-E</option>
+                    </select>
+                </div>
+                <button type="submit" class="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl shadow-lg shadow-indigo-200 transition">
+                    Mulai Belajar <i class="fa-solid fa-arrow-right ml-2"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT AREA CONTAINER -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+        <!-- SECTION 1: HOME DASHBOARD -->
+        <section id="tab-home" class="tab-content space-y-8">
+            <!-- Hero Banner -->
+            <div class="relative bg-gradient-primary rounded-3xl p-6 sm:p-10 text-white overflow-hidden shadow-xl">
+                <div class="relative z-10 max-w-2xl">
+                    <span class="inline-block bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-xs font-semibold tracking-wide uppercase mb-3">
+                        <i class="fa-solid fa-sparkles mr-1"></i> Bahasa Inggris Kelas VIII • Fase D
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight leading-tight">
+                        Telling Stories About Helping Others
+                    </h2>
+                    <p class="mt-3 text-indigo-100 text-sm sm:text-base leading-relaxed">
+                        Mari belajar menceritakan pengalaman berbuat baik (Recount Text) menggunakan Bahasa Inggris sederhana dengan Simple Past Tense!
+                    </p>
+                    <div class="mt-6 flex flex-wrap gap-3">
+                        <button onclick="switchTab('recount')" class="px-5 py-3 bg-white text-indigo-600 rounded-xl font-bold hover:bg-indigo-50 shadow-md transition flex items-center">
+                            <i class="fa-solid fa-play mr-2"></i> Mulai Pembelajaran
+                        </button>
+                        <button onclick="openStudentModal()" class="px-4 py-3 bg-indigo-800/40 hover:bg-indigo-800/60 text-white rounded-xl font-semibold backdrop-blur-sm border border-white/20 transition flex items-center">
+                            <i class="fa-solid fa-user-pen mr-2"></i> <span id="display-student-name">Ubah Nama Siswa</span>
+                        </button>
+                    </div>
+                </div>
+                <!-- Background Graphic Decorative Icons -->
+                <div class="absolute -right-10 -bottom-10 opacity-15 text-white pointer-events-none text-9xl font-black">
+                    <i class="fa-solid fa-hand-holding-heart"></i>
+                </div>
+            </div>
+
+            <!-- Learning Progress Tracker -->
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+                <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-2 mb-4">
+                    <div>
+                        <h3 class="text-base font-bold text-slate-800"><i class="fa-solid fa-bars-progress text-indigo-600 mr-2"></i>Progress Belajar Anda</h3>
+                        <p class="text-xs text-slate-500">Selesaikan setiap aktivitas untuk melengkapi pembelajaran.</p>
+                    </div>
+                    <span id="progress-percent" class="text-xl font-extrabold text-indigo-600">0% Selesai</span>
+                </div>
+                <div class="w-full bg-slate-100 h-3 rounded-full overflow-hidden">
+                    <div id="progress-bar-fill" class="bg-gradient-primary h-full transition-all duration-500" style="width: 0%"></div>
+                </div>
+            </div>
+
+            <!-- Learning Roadmap Cards Grid -->
+            <div>
+                <h3 class="text-lg font-bold text-slate-800 mb-4 flex items-center">
+                    <i class="fa-solid fa-route text-indigo-600 mr-2"></i> Menu Pembelajaran Interaktif
+                </h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                    <!-- Module 1 -->
+                    <div onclick="switchTab('recount')" class="bg-white p-5 rounded-2xl border border-slate-200 card-hover cursor-pointer group">
+                        <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center text-xl font-bold mb-4 group-hover:scale-110 transition">
+                            <i class="fa-solid fa-book-open"></i>
+                        </div>
+                        <h4 class="font-bold text-slate-800 group-hover:text-indigo-600 transition">1. Reading Recount Text</h4>
+                        <p class="text-xs text-slate-500 mt-1">Pelajari 3 cerita pendek tentang pertolongan & pahami struktur cerita (Orientation, Events, Reorientation).</p>
+                    </div>
+
+                    <!-- Module 2 -->
+                    <div onclick="switchTab('vocab')" class="bg-white p-5 rounded-2xl border border-slate-200 card-hover cursor-pointer group">
+                        <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center text-xl font-bold mb-4 group-hover:scale-110 transition">
+                            <i class="fa-solid fa-layer-group"></i>
+                        </div>
+                        <h4 class="font-bold text-slate-800 group-hover:text-indigo-600 transition">2. Care Vocabulary</h4>
+                        <p class="text-xs text-slate-500 mt-1">Kartu flashcard kosakata kepedulian sosial beserta pengucapan audio audio interaktif.</p>
+                    </div>
+
+                    <!-- Module 3 -->
+                    <div onclick="switchTab('past-tense')" class="bg-white p-5 rounded-2xl border border-slate-200 card-hover cursor-pointer group">
+                        <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center text-xl font-bold mb-4 group-hover:scale-110 transition">
+                            <i class="fa-solid fa-clock-rotate-left"></i>
+                        </div>
+                        <h4 class="font-bold text-slate-800 group-hover:text-indigo-600 transition">3. Simple Past Tense</h4>
+                        <p class="text-xs text-slate-500 mt-1">Pahami tata bahasa masa lalu, Verb 2, kalimat tanya "Did", serta Match the Verbs game.</p>
+                    </div>
+
+                    <!-- Module 4 -->
+                    <div onclick="switchTab('listening')" class="bg-white p-5 rounded-2xl border border-slate-200 card-hover cursor-pointer group">
+                        <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-xl flex items-center justify-center text-xl font-bold mb-4 group-hover:scale-110 transition">
+                            <i class="fa-solid fa-headphones"></i>
+                        </div>
+                        <h4 class="font-bold text-slate-800 group-hover:text-indigo-600 transition">4. Empathy Listening</h4>
+                        <p class="text-xs text-slate-500 mt-1">Menyimak dialog empati pendek & melatih kemampuan pemahaman pendengaran.</p>
+                    </div>
+
+                    <!-- Module 5 -->
+                    <div onclick="switchTab('speaking')" class="bg-white p-5 rounded-2xl border border-slate-200 card-hover cursor-pointer group">
+                        <div class="w-12 h-12 bg-rose-100 text-rose-600 rounded-xl flex items-center justify-center text-xl font-bold mb-4 group-hover:scale-110 transition">
+                            <i class="fa-solid fa-comments"></i>
+                        </div>
+                        <h4 class="font-bold text-slate-800 group-hover:text-indigo-600 transition">5. Speaking Challenge</h4>
+                        <p class="text-xs text-slate-500 mt-1">Kartu situasi nyata dengan timer 30-60s untuk melatih respon ekspresi empati secara lisan.</p>
+                    </div>
+
+                    <!-- Module 6 -->
+                    <div onclick="switchTab('story-builder')" class="bg-white p-5 rounded-2xl border border-slate-200 card-hover cursor-pointer group">
+                        <div class="w-12 h-12 bg-cyan-100 text-cyan-600 rounded-xl flex items-center justify-center text-xl font-bold mb-4 group-hover:scale-110 transition">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        </div>
+                        <h4 class="font-bold text-slate-800 group-hover:text-indigo-600 transition">6. Story Builder Wizard</h4>
+                        <p class="text-xs text-slate-500 mt-1">Susun elemen cerita pilihanmu (When, Where, Who, Action) menjadi draf cerita otomatis!</p>
+                    </div>
+
+                    <!-- Module 7 -->
+                    <div onclick="switchTab('writing')" class="bg-white p-5 rounded-2xl border border-slate-200 card-hover cursor-pointer group">
+                        <div class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-xl flex items-center justify-center text-xl font-bold mb-4 group-hover:scale-110 transition">
+                            <i class="fa-solid fa-pen-nib"></i>
+                        </div>
+                        <h4 class="font-bold text-slate-800 group-hover:text-indigo-600 transition">7. Write Your Story</h4>
+                        <p class="text-xs text-slate-500 mt-1">Tulis cerita kebaikanmu sendiri dan periksa dengan fitur pintar "Check My Story".</p>
+                    </div>
+
+                    <!-- Module 8 -->
+                    <div onclick="switchTab('quiz')" class="bg-white p-5 rounded-2xl border border-slate-200 card-hover cursor-pointer group">
+                        <div class="w-12 h-12 bg-teal-100 text-teal-600 rounded-xl flex items-center justify-center text-xl font-bold mb-4 group-hover:scale-110 transition">
+                            <i class="fa-solid fa-circle-question"></i>
+                        </div>
+                        <h4 class="font-bold text-slate-800 group-hover:text-indigo-600 transition">8. Interactive Quiz</h4>
+                        <p class="text-xs text-slate-500 mt-1">20 Soal evaluasi interaktif dengan hasil instan, feedback, dan analisis kuis.</p>
+                    </div>
+
+                    <!-- Module 9 -->
+                    <div onclick="switchTab('reflection')" class="bg-white p-5 rounded-2xl border border-slate-200 card-hover cursor-pointer group">
+                        <div class="w-12 h-12 bg-orange-100 text-orange-600 rounded-xl flex items-center justify-center text-xl font-bold mb-4 group-hover:scale-110 transition">
+                            <i class="fa-solid fa-lightbulb"></i>
+                        </div>
+                        <h4 class="font-bold text-slate-800 group-hover:text-indigo-600 transition">9. Reflection & Submit</h4>
+                        <p class="text-xs text-slate-500 mt-1">Refleksikan kebaikanmu dan kirimkan hasil belajarmu ke Google Sheets Guru!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: READING RECOUNT TEXT -->
+        <section id="tab-recount" class="tab-content space-y-6 hidden">
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+                <div class="flex items-center space-x-3 mb-2">
+                    <div class="w-10 h-10 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center text-lg font-bold">
+                        <i class="fa-solid fa-book-open"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-bold text-slate-800">Recount Text: Experiences of Helping Others</h2>
+                        <p class="text-xs text-slate-500">Recount text menceritakan kembali peristiwa atau pengalaman yang telah terjadi di masa lalu.</p>
+                    </div>
+                </div>
+
+                <!-- Concept Callout -->
+                <div class="mt-4 p-4 bg-indigo-50 border border-indigo-200 rounded-xl text-xs sm:text-sm text-indigo-900 grid grid-cols-1 md:grid-cols-3 gap-3">
+                    <div class="bg-white p-3 rounded-lg border border-indigo-100">
+                        <span class="font-bold text-indigo-700 block">1. Orientation</span>
+                        Memberitahu siapa, kapan, dan di mana cerita terjadi.
+                    </div>
+                    <div class="bg-white p-3 rounded-lg border border-indigo-100">
+                        <span class="font-bold text-indigo-700 block">2. Events</span>
+                        Urutan peristiwa atau tindakan yang dilakukan secara kronologis.
+                    </div>
+                    <div class="bg-white p-3 rounded-lg border border-indigo-100">
+                        <span class="font-bold text-indigo-700 block">3. Reorientation</span>
+                        Penutup cerita yang berisi perasaan atau kesan penulis.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Text Tabs Selector -->
+            <div class="flex space-x-2 border-b border-slate-200 pb-2 overflow-x-auto">
+                <button onclick="showStory(1)" id="story-tab-1" class="story-tab-btn px-4 py-2 rounded-xl text-sm font-semibold bg-indigo-600 text-white shadow-sm transition">Text 1: Helping My Friend</button>
+                <button onclick="showStory(2)" id="story-tab-2" class="story-tab-btn px-4 py-2 rounded-xl text-sm font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 transition">Text 2: Cleaning Our School</button>
+                <button onclick="showStory(3)" id="story-tab-3" class="story-tab-btn px-4 py-2 rounded-xl text-sm font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 transition">Text 3: Helping an Elderly Neighbor</button>
+            </div>
+
+            <!-- Text Display Box -->
+            <div id="story-content-box" class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-6">
+                <!-- Story Content Injected via JS -->
+            </div>
+
+            <!-- Reading Quiz Interactive Area -->
+            <div id="reading-quiz-box" class="bg-slate-900 text-white rounded-2xl p-6 shadow-md space-y-4">
+                <!-- Questions Injected via JS -->
+            </div>
+        </section>
+
+        <!-- SECTION 3: VOCABULARY -->
+        <section id="tab-vocab" class="tab-content space-y-6 hidden">
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col md:flex-row justify-between md:items-center gap-4">
+                <div>
+                    <h2 class="text-xl font-bold text-slate-800 flex items-center">
+                        <i class="fa-solid fa-layer-group text-emerald-600 mr-2"></i> Social Care Vocabulary
+                    </h2>
+                    <p class="text-xs text-slate-500 mt-1">Klik pada kartu untuk melihat arti dalam Bahasa Indonesia & dengarkan pengucapannya!</p>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <span class="text-xs text-slate-500 font-medium">Filter:</span>
+                    <button onclick="filterVocab('all')" class="px-3 py-1 rounded-lg text-xs font-semibold bg-emerald-600 text-white">All</button>
+                    <button onclick="filterVocab('verb')" class="px-3 py-1 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200">Verbs</button>
+                    <button onclick="filterVocab('adj')" class="px-3 py-1 rounded-lg text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200">Adjectives</button>
+                </div>
+            </div>
+
+            <!-- Cards Grid -->
+            <div id="vocab-cards-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <!-- Cards injected dynamically via script.js -->
+            </div>
+        </section>
+
+        <!-- SECTION 4: SIMPLE PAST TENSE -->
+        <section id="tab-past-tense" class="tab-content space-y-6 hidden">
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+                <div class="flex items-center space-x-3 mb-4">
+                    <div class="w-10 h-10 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center text-lg font-bold">
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-bold text-slate-800">Learn Simple Past Tense</h2>
+                        <p class="text-xs text-slate-500">Digunakan untuk menceritakan kejadian yang sudah terjadi di masa lampau.</p>
+                    </div>
+                </div>
+
+                <!-- Sentence Structures Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <!-- Affirmative -->
+                    <div class="bg-emerald-50 p-4 rounded-xl border border-emerald-200">
+                        <span class="inline-block px-2.5 py-1 bg-emerald-600 text-white text-xs font-bold rounded-md mb-2">Affirmative (+)</span>
+                        <p class="text-xs font-bold text-emerald-900 mb-2">Subject + Verb 2 + Object/Complement</p>
+                        <ul class="text-xs text-slate-700 space-y-1 bg-white p-3 rounded-lg border border-emerald-100">
+                            <li>• I <b>helped</b> my friend yesterday.</li>
+                            <li>• She <b>visited</b> her grandmother.</li>
+                            <li>• They <b>cleaned</b> the classroom together.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Negative -->
+                    <div class="bg-rose-50 p-4 rounded-xl border border-rose-200">
+                        <span class="inline-block px-2.5 py-1 bg-rose-600 text-white text-xs font-bold rounded-md mb-2">Negative (-)</span>
+                        <p class="text-xs font-bold text-rose-900 mb-2">Subject + did not (didn't) + Verb 1</p>
+                        <ul class="text-xs text-slate-700 space-y-1 bg-white p-3 rounded-lg border border-rose-100">
+                            <li>• I <b>did not ignore</b> my friend.</li>
+                            <li>• She <b>did not visit</b> the park.</li>
+                            <li>• They <b>didn't leave</b> the dirty room.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Interrogative -->
+                    <div class="bg-blue-50 p-4 rounded-xl border border-blue-200">
+                        <span class="inline-block px-2.5 py-1 bg-blue-600 text-white text-xs font-bold rounded-md mb-2">Interrogative (?)</span>
+                        <p class="text-xs font-bold text-blue-900 mb-2">Did + Subject + Verb 1 ... ?</p>
+                        <ul class="text-xs text-slate-700 space-y-1 bg-white p-3 rounded-lg border border-blue-100">
+                            <li>• <b>Did you help</b> your friend?</li>
+                            <li>• <b>Did she visit</b> her grandmother?</li>
+                            <li>• <b>Did they clean</b> the classroom?</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- WH Questions Section -->
+                <div class="mt-6 bg-slate-50 p-4 rounded-xl border border-slate-200">
+                    <h3 class="text-sm font-bold text-slate-800 mb-3"><i class="fa-solid fa-circle-question text-purple-600 mr-1.5"></i> WH-Questions in Simple Past</h3>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2 text-center text-xs">
+                        <div class="bg-white p-2.5 rounded-lg border border-slate-200">
+                            <span class="font-bold text-indigo-600 block">What</span>
+                            <span class="text-slate-500">What did you do?</span>
+                        </div>
+                        <div class="bg-white p-2.5 rounded-lg border border-slate-200">
+                            <span class="font-bold text-indigo-600 block">Who</span>
+                            <span class="text-slate-500">Who did you help?</span>
+                        </div>
+                        <div class="bg-white p-2.5 rounded-lg border border-slate-200">
+                            <span class="font-bold text-indigo-600 block">Where</span>
+                            <span class="text-slate-500">Where did it happen?</span>
+                        </div>
+                        <div class="bg-white p-2.5 rounded-lg border border-slate-200">
+                            <span class="font-bold text-indigo-600 block">When</span>
+                            <span class="text-slate-500">When did you visit?</span>
+                        </div>
+                        <div class="bg-white p-2.5 rounded-lg border border-slate-200">
+                            <span class="font-bold text-indigo-600 block">Why</span>
+                            <span class="text-slate-500">Why did you help?</span>
+                        </div>
+                        <div class="bg-white p-2.5 rounded-lg border border-slate-200">
+                            <span class="font-bold text-indigo-600 block">How</span>
+                            <span class="text-slate-500">How did you feel?</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Verb Matcher Interactive Activity -->
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+                <div class="flex justify-between items-center mb-4">
+                    <div>
+                        <h3 class="text-base font-bold text-slate-800"><i class="fa-solid fa-gamepad text-purple-600 mr-2"></i> Activity: Match the Verbs!</h3>
+                        <p class="text-xs text-slate-500">Pasangkan Verb 1 (Present) dengan Verb 2 (Past) yang tepat.</p>
+                    </div>
+                    <button onclick="resetVerbGame()" class="px-3 py-1.5 bg-purple-50 text-purple-700 hover:bg-purple-100 rounded-lg text-xs font-semibold transition">
+                        <i class="fa-solid fa-rotate-right mr-1"></i> Reset Game
+                    </button>
+                </div>
+
+                <div id="verb-game-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Left: Verb 1 -->
+                    <div id="verb1-list" class="space-y-2">
+                        <!-- Items rendered by script -->
+                    </div>
+                    <!-- Right: Verb 2 -->
+                    <div id="verb2-list" class="space-y-2">
+                        <!-- Items rendered by script -->
+                    </div>
+                </div>
+                <div id="verb-game-feedback" class="mt-4 p-3 rounded-xl text-center text-xs font-bold hidden"></div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: LISTENING & EMPATHY DIALOGUES -->
+        <section id="tab-listening" class="tab-content space-y-6 hidden">
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+                <div class="flex items-center space-x-3 mb-2">
+                    <div class="w-10 h-10 bg-amber-100 text-amber-600 rounded-xl flex items-center justify-center text-lg font-bold">
+                        <i class="fa-solid fa-headphones"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-bold text-slate-800">Listen & Understand</h2>
+                        <p class="text-xs text-slate-500">Dengarkan dialog ekspresi empati dan jawab pertanyaan pemahamannya.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dialogue Selection and Player -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Dialogue Player -->
+                <div class="md:col-span-1 bg-white rounded-2xl p-5 border border-slate-200 shadow-sm space-y-4">
+                    <h3 class="text-sm font-bold text-slate-800 border-b border-slate-100 pb-2">Pilih Dialog Listening</h3>
+                    <div class="space-y-2">
+                        <button onclick="selectDialogue(1)" id="dlg-btn-1" class="w-full text-left p-3 rounded-xl text-xs font-semibold bg-amber-50 text-amber-900 border border-amber-200 transition">
+                            <i class="fa-solid fa-circle-play mr-2 text-amber-600"></i> Dialogue 1: Offering Help
+                        </button>
+                        <button onclick="selectDialogue(2)" id="dlg-btn-2" class="w-full text-left p-3 rounded-xl text-xs font-semibold bg-slate-50 text-slate-700 border border-slate-200 hover:bg-slate-100 transition">
+                            <i class="fa-solid fa-circle-play mr-2 text-slate-400"></i> Dialogue 2: Dropped Books
+                        </button>
+                        <button onclick="selectDialogue(3)" id="dlg-btn-3" class="w-full text-left p-3 rounded-xl text-xs font-semibold bg-slate-50 text-slate-700 border border-slate-200 hover:bg-slate-100 transition">
+                            <i class="fa-solid fa-circle-play mr-2 text-slate-400"></i> Dialogue 3: Showing Empathy
+                        </button>
+                    </div>
+
+                    <!-- Audio Player Control Card -->
+                    <div class="bg-amber-500/10 rounded-xl p-4 border border-amber-200 text-center space-y-3">
+                        <div class="text-xs font-bold text-amber-800" id="current-dialogue-title">Dialogue 1: Offering Help</div>
+                        <div class="flex justify-center space-x-2">
+                            <button onclick="playCurrentDialogue()" class="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white rounded-lg text-xs font-bold transition shadow-sm">
+                                <i class="fa-solid fa-play mr-1"></i> Play
+                            </button>
+                            <button onclick="stopDialogueAudio()" class="px-4 py-2 bg-slate-600 hover:bg-slate-700 text-white rounded-lg text-xs font-bold transition shadow-sm">
+                                <i class="fa-solid fa-stop mr-1"></i> Stop
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Transcript & MCQs -->
+                <div class="md:col-span-2 space-y-4">
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm space-y-3">
+                        <h3 class="text-sm font-bold text-slate-800 flex items-center">
+                            <i class="fa-solid fa-quote-left text-amber-500 mr-2"></i> Dialogue Script
+                        </h3>
+                        <div id="dialogue-transcript-box" class="bg-slate-50 p-4 rounded-xl text-sm space-y-2 border border-slate-200">
+                            <!-- Injected script -->
+                        </div>
+                    </div>
+
+                    <div id="listening-quiz-box" class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm space-y-4">
+                        <!-- Questions injected -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Empathy Expressions Flash Cards -->
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4">
+                <h3 class="text-base font-bold text-slate-800"><i class="fa-solid fa-heart text-rose-500 mr-2"></i> Empathy Expressions Key Cards</h3>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 text-center">
+                    <div class="p-3 bg-rose-50 border border-rose-100 rounded-xl text-xs font-bold text-rose-900">Are you okay?</div>
+                    <div class="p-3 bg-rose-50 border border-rose-100 rounded-xl text-xs font-bold text-rose-900">What happened?</div>
+                    <div class="p-3 bg-rose-50 border border-rose-100 rounded-xl text-xs font-bold text-rose-900">Can I help you?</div>
+                    <div class="p-3 bg-rose-50 border border-rose-100 rounded-xl text-xs font-bold text-rose-900">Do you need help?</div>
+                    <div class="p-3 bg-rose-50 border border-rose-100 rounded-xl text-xs font-bold text-rose-900">Don't worry.</div>
+                    <div class="p-3 bg-rose-50 border border-rose-100 rounded-xl text-xs font-bold text-rose-900">I can help you.</div>
+                    <div class="p-3 bg-rose-50 border border-rose-100 rounded-xl text-xs font-bold text-rose-900">I'm sorry to hear that.</div>
+                    <div class="p-3 bg-rose-50 border border-rose-100 rounded-xl text-xs font-bold text-rose-900">Let me help you.</div>
+                    <div class="p-3 bg-rose-50 border border-rose-100 rounded-xl text-xs font-bold text-rose-900">That's very kind of you.</div>
+                    <div class="p-3 bg-rose-50 border border-rose-100 rounded-xl text-xs font-bold text-rose-900">Thank you for helping me.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 6: SPEAKING CHALLENGE -->
+        <section id="tab-speaking" class="tab-content space-y-6 hidden">
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+                <div class="flex items-center space-x-3 mb-2">
+                    <div class="w-10 h-10 bg-rose-100 text-rose-600 rounded-xl flex items-center justify-center text-lg font-bold">
+                        <i class="fa-solid fa-comments"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-bold text-slate-800">Speaking Challenge</h2>
+                        <p class="text-xs text-slate-500">Pilih kartu situasi, lalu berlatihlah menyampaikan dialog bantuan secara lisan sebelum waktu habis!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Situation Cards Selection -->
+                <div class="space-y-3">
+                    <h3 class="text-sm font-bold text-slate-800">Pilih Kartu Situasi:</h3>
+                    
+                    <div onclick="selectSpeakingCard(1)" id="speak-card-1" class="speak-card p-4 bg-white border-2 border-indigo-500 rounded-2xl shadow-sm cursor-pointer hover:border-indigo-600 transition">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-extrabold text-indigo-600 uppercase">Situation 1</span>
+                            <i class="fa-solid fa-pen text-slate-400"></i>
+                        </div>
+                        <h4 class="font-bold text-slate-800 text-sm mt-1">Your friend forgot to bring a pen.</h4>
+                        <p class="text-xs text-slate-500 mt-1">Temanmu lupa membawa pulpen di kelas.</p>
+                    </div>
+
+                    <div onclick="selectSpeakingCard(2)" id="speak-card-2" class="speak-card p-4 bg-white border border-slate-200 rounded-2xl shadow-sm cursor-pointer hover:border-indigo-400 transition">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-extrabold text-indigo-600 uppercase">Situation 2</span>
+                            <i class="fa-solid fa-user-injured text-slate-400"></i>
+                        </div>
+                        <h4 class="font-bold text-slate-800 text-sm mt-1">Your friend fell down in the school yard.</h4>
+                        <p class="text-xs text-slate-500 mt-1">Temanmu terjatuh di lapangan sekolah.</p>
+                    </div>
+
+                    <div onclick="selectSpeakingCard(3)" id="speak-card-3" class="speak-card p-4 bg-white border border-slate-200 rounded-2xl shadow-sm cursor-pointer hover:border-indigo-400 transition">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-extrabold text-indigo-600 uppercase">Situation 3</span>
+                            <i class="fa-solid fa-bag-shopping text-slate-400"></i>
+                        </div>
+                        <h4 class="font-bold text-slate-800 text-sm mt-1">Your neighbor needs help carrying groceries.</h4>
+                        <p class="text-xs text-slate-500 mt-1">Tetanggamu membawa banyak belanjaan berat.</p>
+                    </div>
+
+                    <div onclick="selectSpeakingCard(4)" id="speak-card-4" class="speak-card p-4 bg-white border border-slate-200 rounded-2xl shadow-sm cursor-pointer hover:border-indigo-400 transition">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-extrabold text-indigo-600 uppercase">Situation 4</span>
+                            <i class="fa-solid fa-broom text-slate-400"></i>
+                        </div>
+                        <h4 class="font-bold text-slate-800 text-sm mt-1">Your classroom is dirty after school.</h4>
+                        <p class="text-xs text-slate-500 mt-1">Ruang kelas sangat kotor setelah jam pelajaran selesai.</p>
+                    </div>
+                </div>
+
+                <!-- Practice Console -->
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between space-y-6">
+                    <div>
+                        <div class="flex items-center justify-between border-b border-slate-100 pb-3 mb-4">
+                            <h3 class="font-bold text-slate-800 text-sm">Interactive Speaking Timer</h3>
+                            <span id="speaking-timer-display" class="px-3 py-1 bg-rose-100 text-rose-700 rounded-full font-black text-sm">00:45</span>
+                        </div>
+
+                        <!-- Dialogue Prompt Helper -->
+                        <div class="bg-indigo-50 p-4 rounded-xl border border-indigo-100 text-xs space-y-2 mb-4">
+                            <span class="font-bold text-indigo-800 block">Guided Dialogue Pattern:</span>
+                            <div class="text-slate-700"><b>A:</b> "What happened? / Are you okay?"</div>
+                            <div class="text-slate-700"><b>B:</b> "<span id="speak-prompt-need">I forgot my pen.</span>"</div>
+                            <div class="text-slate-700"><b>A:</b> "Don't worry. Can I help you? / I can share mine."</div>
+                            <div class="text-slate-700"><b>B:</b> "Thank you so much! That's very kind of you."</div>
+                        </div>
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="space-y-3">
+                        <button id="btn-start-speaking" onclick="startSpeakingTimer()" class="w-full py-3 bg-rose-500 hover:bg-rose-600 text-white font-bold rounded-xl shadow-md transition flex items-center justify-center">
+                            <i class="fa-solid fa-microphone mr-2"></i> Start Speaking Challenge (45s)
+                        </button>
+                        <button onclick="markSpeakingDone()" class="w-full py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-xl transition text-xs">
+                            <i class="fa-solid fa-check mr-1.5"></i> Mark Practice Completed
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 7: STORY BUILDER WIZARD -->
+        <section id="tab-story-builder" class="tab-content space-y-6 hidden">
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+                <div class="flex items-center space-x-3 mb-2">
+                    <div class="w-10 h-10 bg-cyan-100 text-cyan-600 rounded-xl flex items-center justify-center text-lg font-bold">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-bold text-slate-800">Build Your Story Wizard</h2>
+                        <p class="text-xs text-slate-500">Pilih opsi di bawah ini untuk menyusun draf Recount Text kebaikanmu secara otomatis!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- Form Selections -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4 text-xs">
+                    <div>
+                        <label class="font-bold text-slate-700 block mb-1">1. When did it happen? (Kapan?)</label>
+                        <select id="builder-when" class="w-full p-2.5 rounded-xl border border-slate-300 font-medium">
+                            <option value="Yesterday">Yesterday (Kemarin)</option>
+                            <option value="Last Sunday">Last Sunday (Hari Minggu lalu)</option>
+                            <option value="Last week">Last week (Minggu lalu)</option>
+                            <option value="Last month">Last month (Bulan lalu)</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="font-bold text-slate-700 block mb-1">2. Where did it happen? (Di mana?)</label>
+                        <select id="builder-where" class="w-full p-2.5 rounded-xl border border-slate-300 font-medium">
+                            <option value="at school">At school (Di sekolah)</option>
+                            <option value="at home">At home (Di rumah)</option>
+                            <option value="in my neighborhood">In my neighborhood (Di lingkungan rumah)</option>
+                            <option value="at the park">At the park (Di taman)</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="font-bold text-slate-700 block mb-1">3. Who did you help? (Siapa?)</label>
+                        <select id="builder-who" class="w-full p-2.5 rounded-xl border border-slate-300 font-medium">
+                            <option value="my friend">My friend (Temanku)</option>
+                            <option value="my teacher">My teacher (Guruku)</option>
+                            <option value="my neighbor">My neighbor (Tetanggaku)</option>
+                            <option value="an elderly woman">An elderly woman (Nenek tua)</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="font-bold text-slate-700 block mb-1">4. What happened? (Masalah/Kejadian)</label>
+                        <select id="builder-what" class="w-full p-2.5 rounded-xl border border-slate-300 font-medium">
+                            <option value="needed help carrying heavy books">Needed help carrying heavy books</option>
+                            <option value="lost a pencil case and felt sad">Lost a pencil case and felt sad</option>
+                            <option value="dropped groceries on the street">Dropped groceries on the street</option>
+                            <option value="could not clean the classroom alone">Could not clean the classroom alone</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="font-bold text-slate-700 block mb-1">5. What did you do? (Tindakanmu - Past Verb)</label>
+                        <select id="builder-action" class="w-full p-2.5 rounded-xl border border-slate-300 font-medium">
+                            <option value="helped carry the heavy load">Helped carry the heavy load</option>
+                            <option value="shared my stationery and searched together">Shared my stationery and searched together</option>
+                            <option value="helped pick up the dropped items">Helped pick up the dropped items</option>
+                            <option value="cleaned and swept the classroom together">Cleaned and swept the classroom together</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="font-bold text-slate-700 block mb-1">6. How did you feel? (Perasaanmu)</label>
+                        <select id="builder-feel" class="w-full p-2.5 rounded-xl border border-slate-300 font-medium">
+                            <option value="happy and proud">Happy and proud (Senang dan bangga)</option>
+                            <option value="thankful and grateful">Thankful and grateful (Bersyukur)</option>
+                            <option value="excited to share kindness">Excited to share kindness (Semangat)</option>
+                        </select>
+                    </div>
+
+                    <button onclick="generateStoryDraft()" class="w-full py-3 bg-cyan-600 hover:bg-cyan-700 text-white font-bold rounded-xl shadow-md transition">
+                        <i class="fa-solid fa-wand-magic-sparkles mr-2"></i> Generate Story Draft Now
+                    </button>
+                </div>
+
+                <!-- Preview Box -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between space-y-4">
+                    <div>
+                        <h3 class="font-bold text-slate-800 text-sm border-b border-slate-100 pb-2 mb-3">Generated Story Draft Preview</h3>
+                        <div id="builder-draft-box" class="bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs sm:text-sm text-slate-700 leading-relaxed font-mono whitespace-pre-line">
+                            Klik tombol "Generate Story Draft Now" untuk melihat draf ceritamu di sini!
+                        </div>
+                    </div>
+                    <button onclick="transferDraftToWriting()" class="w-full py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl transition text-xs">
+                        <i class="fa-solid fa-file-export mr-2"></i> Transfer Draft to Writing Page
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 8: WRITING RECOUNT STORY -->
+        <section id="tab-writing" class="tab-content space-y-6 hidden">
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col md:flex-row justify-between md:items-center gap-4">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-indigo-100 text-indigo-600 rounded-xl flex items-center justify-center text-lg font-bold">
+                        <i class="fa-solid fa-pen-nib"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-bold text-slate-800">Write Your Good Deed Story</h2>
+                        <p class="text-xs text-slate-500">Tulis cerita pengalaman menolong orang lain (Target: 80–120 kata).</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <button onclick="openGoogleDocs()" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold transition shadow-sm flex items-center">
+                        <i class="fa-solid fa-file-word mr-2"></i> Open Google Docs
+                    </button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Editor Box -->
+                <div class="lg:col-span-2 bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Story Title (Judul Cerita)</label>
+                        <input type="text" id="writing-title" placeholder="Contoh: Helping My Friend at School" class="w-full px-4 py-2 rounded-xl border border-slate-300 font-semibold text-sm outline-none focus:ring-2 focus:ring-indigo-500">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Story Content (Orientation, Events, Reorientation)</label>
+                        <textarea id="writing-content" rows="12" placeholder="Write your story here...&#10;&#10;Orientation: Yesterday at school, my friend Budi lost his pencil case...&#10;Events: First, I helped him search under the desks. Then, we found it near the library...&#10;Reorientation: I felt happy because I could help my friend." class="w-full p-4 rounded-xl border border-slate-300 text-sm outline-none focus:ring-2 focus:ring-indigo-500 font-sans leading-relaxed"></textarea>
+                    </div>
+
+                    <div class="flex justify-between items-center text-xs text-slate-500">
+                        <span id="word-count-display">Word count: 0 words</span>
+                        <span>Target: 80–120 words</span>
+                    </div>
+
+                    <div class="flex flex-wrap gap-3">
+                        <button onclick="checkStoryStructure()" class="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl text-xs transition shadow-md">
+                            <i class="fa-solid fa-magnifying-glass-chart mr-1.5"></i> CHECK MY STORY
+                        </button>
+                        <button onclick="saveStudentStory()" class="px-4 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl text-xs transition shadow-md">
+                            <i class="fa-solid fa-floppy-disk mr-1.5"></i> Save Story
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Analysis Feedback Panel -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4">
+                    <h3 class="font-bold text-slate-800 text-sm border-b border-slate-100 pb-2">Automated Story Structure Check</h3>
+                    <div id="story-check-results" class="space-y-3 text-xs">
+                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 text-slate-500">
+                            Klik tombol <b>CHECK MY STORY</b> untuk memeriksa kelengkapan struktur cerita!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 9: INTERACTIVE QUIZ -->
+        <section id="tab-quiz" class="tab-content space-y-6 hidden">
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-teal-100 text-teal-600 rounded-xl flex items-center justify-center text-lg font-bold">
+                        <i class="fa-solid fa-circle-question"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-bold text-slate-800">Interactive Assessment Quiz</h2>
+                        <p class="text-xs text-slate-500">20 Soal Pilihan Ganda (Recount, Past Tense, Vocab, Dialogue & Sequence).</p>
+                    </div>
+                </div>
+                <button onclick="resetQuiz()" class="px-4 py-2 bg-teal-50 text-teal-700 hover:bg-teal-100 rounded-xl text-xs font-bold transition">
+                    <i class="fa-solid fa-rotate mr-1.5"></i> Restart Quiz
+                </button>
+            </div>
+
+            <!-- Quiz Score Result Summary Card (Hidden until submitted) -->
+            <div id="quiz-result-card" class="bg-gradient-primary text-white rounded-2xl p-6 shadow-xl hidden space-y-4">
+                <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-4 border-b border-white/20 pb-4">
+                    <div>
+                        <span class="text-xs uppercase font-bold tracking-wider text-indigo-200">Quiz Completed!</span>
+                        <h3 class="text-2xl font-extrabold" id="quiz-feedback-title">Excellent Job!</h3>
+                    </div>
+                    <div class="text-3xl font-black bg-white/20 px-5 py-2 rounded-2xl backdrop-blur-md" id="quiz-score-display">
+                        100%
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center text-xs">
+                    <div class="bg-white/10 p-3 rounded-xl">Correct: <span id="quiz-correct-count" class="font-bold text-emerald-300">0</span></div>
+                    <div class="bg-white/10 p-3 rounded-xl">Incorrect: <span id="quiz-wrong-count" class="font-bold text-rose-300">0</span></div>
+                    <div class="bg-white/10 p-3 rounded-xl">Total Score: <span id="quiz-points-count" class="font-bold">0/100</span></div>
+                    <div class="bg-white/10 p-3 rounded-xl">Grade: <span id="quiz-grade-label" class="font-bold text-amber-300">A</span></div>
+                </div>
+            </div>
+
+            <!-- Questions Container -->
+            <div id="quiz-questions-container" class="space-y-4">
+                <!-- Dynamically rendered via script.js -->
+            </div>
+
+            <div class="flex justify-end">
+                <button id="btn-submit-quiz" onclick="submitQuiz()" class="px-8 py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl shadow-lg transition">
+                    <i class="fa-solid fa-paper-plane mr-2"></i> Submit Quiz Answers
+                </button>
+            </div>
+        </section>
+
+        <!-- SECTION 10: REFLECTION & SUBMIT TO GOOGLE SHEETS -->
+        <section id="tab-reflection" class="tab-content space-y-6 hidden">
+            <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+                <div class="flex items-center space-x-3 mb-2">
+                    <div class="w-10 h-10 bg-orange-100 text-orange-600 rounded-xl flex items-center justify-center text-lg font-bold">
+                        <i class="fa-solid fa-lightbulb"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-bold text-slate-800">My Learning Reflection</h2>
+                        <p class="text-xs text-slate-500">Refleksikan pemahaman materi & kebaikan yang telah kamu lakukan.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Self Checklist -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-3">
+                    <h3 class="font-bold text-slate-800 text-sm border-b border-slate-100 pb-2">Self-Assessment Checklist</h3>
+                    <div class="space-y-2 text-xs font-medium text-slate-700">
+                        <label class="flex items-center space-x-2.5 p-2 rounded-lg hover:bg-slate-50 cursor-pointer">
+                            <input type="checkbox" class="ref-check rounded text-indigo-600 focus:ring-indigo-500 w-4 h-4">
+                            <span>I understand Recount Text structure.</span>
+                        </label>
+                        <label class="flex items-center space-x-2.5 p-2 rounded-lg hover:bg-slate-50 cursor-pointer">
+                            <input type="checkbox" class="ref-check rounded text-indigo-600 focus:ring-indigo-500 w-4 h-4">
+                            <span>I can use Simple Past Tense affirmative & negative.</span>
+                        </label>
+                        <label class="flex items-center space-x-2.5 p-2 rounded-lg hover:bg-slate-50 cursor-pointer">
+                            <input type="checkbox" class="ref-check rounded text-indigo-600 focus:ring-indigo-500 w-4 h-4">
+                            <span>I can ask questions using "Did" and WH-words.</span>
+                        </label>
+                        <label class="flex items-center space-x-2.5 p-2 rounded-lg hover:bg-slate-50 cursor-pointer">
+                            <input type="checkbox" class="ref-check rounded text-indigo-600 focus:ring-indigo-500 w-4 h-4">
+                            <span>I understand social care vocabulary & empathy expressions.</span>
+                        </label>
+                        <label class="flex items-center space-x-2.5 p-2 rounded-lg hover:bg-slate-50 cursor-pointer">
+                            <input type="checkbox" class="ref-check rounded text-indigo-600 focus:ring-indigo-500 w-4 h-4">
+                            <span>I can write a short recount text story.</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Reflection Questions -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-4">
+                    <h3 class="font-bold text-slate-800 text-sm border-b border-slate-100 pb-2">Reflection Prompts</h3>
+                    
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-700 mb-1">1. What good deed did you do recently?</label>
+                        <input type="text" id="ref-q1" placeholder="Contoh: I helped my classmate clean the board." class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-700 mb-1">2. How did you feel after helping someone?</label>
+                        <input type="text" id="ref-q2" placeholder="Contoh: I felt very happy and peaceful." class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-700 mb-1">3. What will you do to help others in the future?</label>
+                        <input type="text" id="ref-q3" placeholder="Contoh: I will always share my snacks and support friends." class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs">
+                    </div>
+
+                    <button onclick="submitFinalDataToSheets()" class="w-full py-3 bg-gradient-secondary text-white font-bold rounded-xl shadow-lg hover:opacity-95 transition text-xs flex items-center justify-center">
+                        <i class="fa-solid fa-cloud-arrow-up mr-2"></i> Submit Learning Report to Teacher
+                    </button>
+                    <div id="sync-status-msg" class="text-xs text-center font-semibold text-slate-500"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 11: TEACHER CORNER -->
+        <section id="tab-teacher" class="tab-content space-y-6 hidden">
+            <div class="bg-amber-500 text-white rounded-2xl p-6 shadow-md flex justify-between items-center">
+                <div>
+                    <span class="text-xs uppercase font-bold tracking-wider opacity-90">Teacher Control Panel</span>
+                    <h2 class="text-2xl font-extrabold">Teacher Corner & TPACK Framework</h2>
+                </div>
+                <div class="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center text-2xl font-bold">
+                    <i class="fa-solid fa-chalkboard-user"></i>
+                </div>
+            </div>
+
+            <!-- Learning Objectives & Steps -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+                    <h3 class="font-bold text-slate-800 text-sm border-b border-slate-100 pb-2"><i class="fa-solid fa-bullseye text-amber-500 mr-2"></i>Tujuan Pembelajaran (TP)</h3>
+                    <ul class="text-xs text-slate-600 space-y-1.5 list-disc pl-4 leading-relaxed">
+                        <li>Mengidentifikasi struktur Recount Text (Orientation, Events, Reorientation).</li>
+                        <li>Mengidentifikasi & membuat kalimat Simple Past Tense (+, -, ?).</li>
+                        <li>Memahami kosakata tindakan kepedulian sosial & ekspresi empati.</li>
+                        <li>Menulis draf cerita pendek tentang pengalaman membantu orang lain (80-120 kata).</li>
+                        <li>Mempresentasikan cerita secara lisan dengan percaya diri.</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+                    <h3 class="font-bold text-slate-800 text-sm border-b border-slate-100 pb-2"><i class="fa-solid fa-diagram-project text-amber-500 mr-2"></i>Langkah Pembelajaran (Deep Learning)</h3>
+                    <ol class="text-xs text-slate-600 space-y-1.5 list-decimal pl-4 leading-relaxed">
+                        <li><b>Apersepsi:</b> Diskusi awal tentang pengalaman membantu orang lain.</li>
+                        <li><b>Exploration:</b> Membaca teks recount & mengeksplorasi kosakata care.</li>
+                        <li><b>Grammar & Listening:</b> Belajar Simple Past Tense & menyimak dialog empati.</li>
+                        <li><b>Writing & Speaking:</b> Membangun cerita dengan Story Builder & latihan bicara.</li>
+                        <li><b>Reflection & Assessment:</b> Evaluasi kuis & pengiriman data ke Google Sheets.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- Writing Assessment Rubric -->
+            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                <h3 class="font-bold text-slate-800 text-sm border-b border-slate-100 pb-2"><i class="fa-solid fa-table text-amber-500 mr-2"></i> Writing Assessment Rubric (Skor Maksimal: 20)</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-xs text-left border-collapse border border-slate-200">
+                        <thead>
+                            <tr class="bg-slate-100 text-slate-700">
+                                <th class="p-2 border border-slate-200">Aspect</th>
+                                <th class="p-2 border border-slate-200">Score 1 (Poor)</th>
+                                <th class="p-2 border border-slate-200">Score 2 (Fair)</th>
+                                <th class="p-2 border border-slate-200">Score 3 (Good)</th>
+                                <th class="p-2 border border-slate-200">Score 4 (Excellent)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-slate-600">
+                            <tr>
+                                <td class="p-2 border border-slate-200 font-bold">Content</td>
+                                <td class="p-2 border border-slate-200">Tidak relevan</td>
+                                <td class="p-2 border border-slate-200">Kurang relevan</td>
+                                <td class="p-2 border border-slate-200">Relevan dengan topik</td>
+                                <td class="p-2 border border-slate-200">Sangat relevan & mendalam</td>
+                            </tr>
+                            <tr>
+                                <td class="p-2 border border-slate-200 font-bold">Organization</td>
+                                <td class="p-2 border border-slate-200">Struktur tidak jelas</td>
+                                <td class="p-2 border border-slate-200">Ada 1 bagian struktur</td>
+                                <td class="p-2 border border-slate-200">Ada 2 bagian struktur</td>
+                                <td class="p-2 border border-slate-200">Lengkap (O, E, R)</td>
+                            </tr>
+                            <tr>
+                                <td class="p-2 border border-slate-200 font-bold">Grammar</td>
+                                <td class="p-2 border border-slate-200">Banyak kesalahan past tense</td>
+                                <td class="p-2 border border-slate-200">Beberapa verb 2 tepat</td>
+                                <td class="p-2 border border-slate-200">Sebagian besar past tense tepat</td>
+                                <td class="p-2 border border-slate-200">Penggunaan Past Tense sempurna</td>
+                            </tr>
+                            <tr>
+                                <td class="p-2 border border-slate-200 font-bold">Vocabulary</td>
+                                <td class="p-2 border border-slate-200">Kosakata sangat terbatas</td>
+                                <td class="p-2 border border-slate-200">Kosakata sederhana</td>
+                                <td class="p-2 border border-slate-200">Menggunakan kosakata care</td>
+                                <td class="p-2 border border-slate-200">Variasi kosakata kepedulian tepat</td>
+                            </tr>
+                            <tr>
+                                <td class="p-2 border border-slate-200 font-bold">Sequence</td>
+                                <td class="p-2 border border-slate-200">Tidak ada urutan waktu</td>
+                                <td class="p-2 border border-slate-200">Urutan kurang teratur</td>
+                                <td class="p-2 border border-slate-200">Urutan teratur</td>
+                                <td class="p-2 border border-slate-200">Sangat runtut (First, Then, After)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Google Sheets Integration Setup Card -->
+            <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                <h3 class="font-bold text-slate-800 text-sm border-b border-slate-100 pb-2"><i class="fa-solid fa-link text-indigo-600 mr-2"></i> Cloud Integration Settings (Google Sheets & Docs)</h3>
+                
+                <div class="space-y-3 text-xs">
+                    <div>
+                        <label class="font-bold text-slate-700 block mb-1">Google Apps Script Web App URL (Google Sheets)</label>
+                        <input type="text" id="config-sheets-url" placeholder="Paste Web App URL here..." class="w-full px-3 py-2 border border-slate-300 rounded-xl font-mono text-xs">
+                    </div>
+
+                    <div>
+                        <label class="font-bold text-slate-700 block mb-1">Google Docs Shared Assignment Link</label>
+                        <input type="text" id="config-docs-url" placeholder="Paste Google Docs URL here..." class="w-full px-3 py-2 border border-slate-300 rounded-xl font-mono text-xs">
+                    </div>
+
+                    <button onclick="saveIntegrationURLs()" class="px-4 py-2 bg-indigo-600 text-white rounded-xl font-bold hover:bg-indigo-700 transition">
+                        Save Configuration
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-6 mt-12">
+        <div class="max-w-7xl mx-auto px-4 text-center text-xs text-slate-500 space-y-1">
+            <p class="font-semibold text-slate-700">GOOD DEEDS, GOOD STORIES • Interactive English Learning App</p>
+            <p>Designed for Grade 8 SMP (Fase D Kurikulum Merdeka) • TPACK & Deep Learning</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Configuration Variables
+        let GOOGLE_SHEETS_URL = localStorage.getItem('cfg_sheets_url') || "";
+        let GOOGLE_DOCS_URL = localStorage.getItem('cfg_docs_url') || "https://docs.google.com";
+
+        // Student Data State
+        let currentStudent = JSON.parse(localStorage.getItem('student_info')) || { name: 'Siswa SMP', class: 'VIII-A' };
+        
+        // Progress tracking state
+        let progressState = JSON.parse(localStorage.getItem('learning_progress')) || {
+            readingDone: false,
+            vocabDone: false,
+            pastTenseDone: false,
+            listeningDone: false,
+            speakingDone: false,
+            storyBuilderDone: false,
+            writingDone: false,
+            quizDone: false,
+            quizScore: 0,
+            reflectionDone: false
+        };
+
+        // Tab Switcher
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            const target = document.getElementById('tab-' + tabId);
+            if (target) target.classList.remove('hidden');
+
+            // Update Navigation Active States
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('bg-indigo-50', 'text-indigo-600', 'font-bold');
+            });
+            const activeBtn = document.getElementById('nav-' + tabId);
+            if (activeBtn && tabId !== 'teacher') {
+                activeBtn.classList.add('bg-indigo-50', 'text-indigo-600', 'font-bold');
+            }
+
+            // Close Mobile Menu
+            document.getElementById('mobile-menu').classList.add('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleMobileMenu() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
+
+        function openStudentModal() {
+            document.getElementById('student-info-modal').classList.remove('hidden');
+        }
+
+        function saveStudentInfo(e) {
+            e.preventDefault();
+            const name = document.getElementById('input-student-name').value.trim();
+            const cls = document.getElementById('input-student-class').value;
+            if (!name) return;
+
+            currentStudent = { name, class: cls };
+            localStorage.setItem('student_info', JSON.stringify(currentStudent));
+            document.getElementById('display-student-name').textContent = `${name} (${cls})`;
+            document.getElementById('student-info-modal').classList.add('hidden');
+        }
+
+        function updateProgressBar() {
+            const keys = ['readingDone', 'vocabDone', 'pastTenseDone', 'listeningDone', 'speakingDone', 'storyBuilderDone', 'writingDone', 'quizDone', 'reflectionDone'];
+            let doneCount = 0;
+            keys.forEach(k => { if (progressState[k]) doneCount++; });
+            const pct = Math.round((doneCount / keys.length) * 100);
+
+            const fill = document.getElementById('progress-bar-fill');
+            const txt = document.getElementById('progress-percent');
+            if (fill) fill.style.width = pct + '%';
+            if (txt) txt.textContent = pct + '% Selesai';
+
+            localStorage.setItem('learning_progress', JSON.stringify(progressState));
+        }
+
+        // Story Reading Data
+        const storiesData = {
+            1: {
+                title: "Helping My Friend",
+                content: `<b>[Orientation]</b> Last Tuesday morning, my classmate Budi forgot to bring his pencil case to school. He was very worried because we had an English test.<br><br><b>[Events]</b> First, I saw him looking sad at his desk. I approached him and asked, "What happened, Budi?" He told me that he left his pencils at home. I immediately opened my bag and lent him a spare pencil and an eraser. He smiled and said, "Thank you so much!" During the test, we both worked quietly and did our best.<br><br><b>[Reorientation]</b> I felt very happy because I could help my friend when he needed it most.`,
+                questions: [
+                    {
+                        q: "What is the main topic of the story?",
+                        options: ["Helping a friend who forgot stationery", "Cleaning the classroom together", "Winning an English contest", "Buying new pencils"],
+                        ans: 0,
+                        exp: "Cerita berfokus pada pengalaman membantu Budi yang lupa membawa tempat pensil."
+                    },
+                    {
+                        q: "When did the story happen?",
+                        options: ["Last Monday", "Last Tuesday morning", "Yesterday afternoon", "Next week"],
+                        ans: 1,
+                        exp: "Dalam Orientation disebutkan 'Last Tuesday morning'."
+                    },
+                    {
+                        q: "What did the writer lend to Budi?",
+                        options: ["A bag and books", "A spare pencil and an eraser", "A ruler and money", "Food and drinks"],
+                        ans: 1,
+                        exp: "Penulis meminjamkan 'a spare pencil and an eraser'."
+                    }
+                ]
+            },
+            2: {
+                title: "Cleaning Our School",
+                content: `<b>[Orientation]</b> Last Friday afternoon, all Grade 8 students participated in a school cleanup activity after class.<br><br><b>[Events]</b> First, our teacher divided us into small groups. My group was responsible for cleaning the school yard. I swept the dried leaves, while my friend Ani collected plastic trash. After that, we put all the rubbish into the trash bin. We worked together happily for about one hour.<br><br><b>[Reorientation]</b> Our school yard became clean and fresh. I felt proud because we kept our environment clean together.`,
+                questions: [
+                    {
+                        q: "Where did the story take place?",
+                        options: ["In a public park", "At the writer's home", "At school", "At the market"],
+                        ans: 2,
+                        exp: "Kegiatan kerja bakti terjadi di lingkungan sekolah ('at school')."
+                    },
+                    {
+                        q: "What did the writer do during the cleanup?",
+                        options: ["Swept the dried leaves", "Collected plastic bottles", "Washed the floor", "Planted flowers"],
+                        ans: 0,
+                        exp: "Penulis menyebutkan 'I swept the dried leaves'."
+                    }
+                ]
+            },
+            3: {
+                title: "Helping an Elderly Neighbor",
+                content: `<b>[Orientation]</b> Last Sunday morning, I saw Mrs. Lina, my elderly neighbor, carrying two heavy bags of groceries near my house.<br><br><b>[Events]</b> She looked tired and walked very slowly. I walked up to her and said, "Good morning, Mrs. Lina. Let me help you carry those bags." She smiled warmly and replied, "Thank you, dear." I carried the groceries all the way to her kitchen.<br><br><b>[Reorientation]</b> Mrs. Lina gave me a glass of fresh orange juice and thanked me. I felt satisfied and happy to help an elderly neighbor.`,
+                questions: [
+                    {
+                        q: "Who was Mrs. Lina?",
+                        options: ["The writer's teacher", "The writer's elderly neighbor", "The writer's grandmother", "A school doctor"],
+                        ans: 1,
+                        exp: " Mrs. Lina adalah tetangga lanjut usia ('elderly neighbor')."
+                    },
+                    {
+                        q: "How did Mrs. Lina express her gratitude?",
+                        options: ["She gave money", "She gave fresh orange juice", "She bought groceries", "She walked away"],
+                        ans: 1,
+                        exp: "Mrs. Lina memberikan 'a glass of fresh orange juice'."
+                    }
+                ]
+            }
+        };
+
+        function showStory(id) {
+            document.querySelectorAll('.story-tab-btn').forEach(b => {
+                b.classList.remove('bg-indigo-600', 'text-white');
+                b.classList.add('bg-slate-100', 'text-slate-600');
+            });
+            const activeBtn = document.getElementById('story-tab-' + id);
+            if (activeBtn) {
+                activeBtn.classList.remove('bg-slate-100', 'text-slate-600');
+                activeBtn.classList.add('bg-indigo-600', 'text-white');
+            }
+
+            const data = storiesData[id];
+            const box = document.getElementById('story-content-box');
+            box.innerHTML = `
+                <h3 class="text-xl font-bold text-slate-800">${data.title}</h3>
+                <div class="text-slate-700 leading-relaxed text-sm bg-slate-50 p-5 rounded-xl border border-slate-200">
+                    ${data.content}
+                </div>
+            `;
+
+            // Render Questions
+            const qBox = document.getElementById('reading-quiz-box');
+            let qHtml = `<h4 class="font-bold text-base text-amber-400 mb-3"><i class="fa-solid fa-clipboard-question mr-2"></i>Comprehension Questions</h4>`;
+            data.questions.forEach((qObj, idx) => {
+                qHtml += `
+                    <div class="space-y-2 text-xs border-b border-slate-800 pb-3">
+                        <p class="font-semibold text-slate-200">${idx + 1}. ${qObj.q}</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                            ${qObj.options.map((opt, oIdx) => `
+                                <button onclick="checkReadingAns(${id}, ${idx}, ${oIdx})" class="reading-opt-${idx} text-left p-2.5 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 transition">
+                                    ${String.fromCharCode(65 + oIdx)}. ${opt}
+                                </button>
+                            `).join('')}
+                        </div>
+                        <div id="reading-exp-${id}-${idx}" class="text-xs font-semibold mt-1 hidden"></div>
+                    </div>
+                `;
+            });
+            qBox.innerHTML = qHtml;
+
+            progressState.readingDone = true;
+            updateProgressBar();
+        }
+
+        function checkReadingAns(storyId, qIdx, selectedIdx) {
+            const qObj = storiesData[storyId].questions[qIdx];
+            const expEl = document.getElementById(`reading-exp-${storyId}-${qIdx}`);
+            if (selectedIdx === qObj.ans) {
+                expEl.className = "text-xs font-semibold text-emerald-400 mt-1";
+                expEl.innerHTML = `<i class="fa-solid fa-circle-check mr-1"></i> Correct! ${qObj.exp}`;
+            } else {
+                expEl.className = "text-xs font-semibold text-rose-400 mt-1";
+                expEl.innerHTML = `<i class="fa-solid fa-circle-xmark mr-1"></i> Incorrect. ${qObj.exp}`;
+            }
+            expEl.classList.remove('hidden');
+        }
+
+        // Vocabulary Flashcards Data
+        const vocabList = [
+            { en: "help", id: "menolong / bantuan", type: "verb", ex: "I help my friend every day." },
+            { en: "helped", id: "menolong (past)", type: "verb", ex: "I helped my friend yesterday." },
+            { en: "assist", id: "membantu", type: "verb", ex: "Can I assist you with those books?" },
+            { en: "share", id: "berbagi", type: "verb", ex: "We shared our lunch at school." },
+            { en: "give", id: "memberi", type: "verb", ex: "She gave me an eraser." },
+            { en: "visit", id: "mengunjungi", type: "verb", ex: "We visited our grandmother." },
+            { en: "clean", id: "membersihkan", type: "verb", ex: "They cleaned the classroom." },
+            { en: "support", id: "mendukung", type: "verb", ex: "Friends support each other." },
+            { en: "donate", id: "mendonasi", type: "verb", ex: "We donated clothes last week." },
+            { en: "volunteer", id: "relawan / mendaftar relawan", type: "verb", ex: "He volunteered to sweep the room." },
+            { en: "comfort", id: "menenangkan", type: "verb", ex: "I comforted my sad friend." },
+            { en: "care", id: "peduli", type: "verb", ex: "We care about our environment." },
+            { en: "kindness", id: "kebaikan", type: "adj", ex: "Thank you for your kindness." },
+            { en: "friendly", id: "ramah", type: "adj", ex: "Budi is a friendly student." },
+            { en: "helpful", id: "suka membantu", type: "adj", ex: "She is very helpful at home." },
+            { en: "generous", id: "dermawan / pemurah", type: "adj", ex: "He is generous to share food." },
+            { en: "caring", id: "penuh perhatian", type: "adj", ex: "A caring friend always listens." },
+            { en: "respect", id: "menghormati", type: "verb", ex: "We respect our elders." },
+            { en: "protect", id: "melindungi", type: "verb", ex: "Let's protect our school." },
+            { en: "encourage", id: "menyemangati", type: "verb", ex: "The teacher encouraged us." }
+        ];
+
+        function renderVocabCards(items) {
+            const grid = document.getElementById('vocab-cards-grid');
+            grid.innerHTML = items.map(v => `
+                <div class="flip-card h-40 cursor-pointer" onclick="this.classList.toggle('flipped')">
+                    <div class="flip-card-inner relative w-full h-full shadow-sm rounded-2xl border border-slate-200 bg-white p-4 flex flex-col justify-between">
+                        <!-- Front -->
+                        <div class="flip-card-front absolute inset-0 p-4 flex flex-col justify-between bg-white rounded-2xl">
+                            <div class="flex justify-between items-center">
+                                <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase ${v.type === 'verb' ? 'bg-blue-100 text-blue-700' : 'bg-amber-100 text-amber-700'}">${v.type}</span>
+                                <button onclick="event.stopPropagation(); speakWord('${v.en}')" class="text-slate-400 hover:text-indigo-600 transition">
+                                    <i class="fa-solid fa-volume-high"></i>
+                                </button>
+                            </div>
+                            <div class="text-center my-auto">
+                                <h4 class="text-xl font-extrabold text-slate-800">${v.en}</h4>
+                                <span class="text-[10px] text-slate-400 block mt-1">Tap to flip card</span>
+                            </div>
+                        </div>
+                        <!-- Back -->
+                        <div class="flip-card-back absolute inset-0 p-4 flex flex-col justify-center bg-indigo-600 text-white rounded-2xl text-center">
+                            <p class="font-bold text-sm text-indigo-100">${v.id}</p>
+                            <p class="text-xs text-indigo-200 italic mt-2">"${v.ex}"</p>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            progressState.vocabDone = true;
+            updateProgressBar();
+        }
+
+        function filterVocab(type) {
+            if (type === 'all') renderVocabCards(vocabList);
+            else renderVocabCards(vocabList.filter(v => v.type === type));
+        }
+
+        function speakWord(text) {
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'en-US';
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        // Verb Matching Game Data
+        const verbPairs = [
+            { v1: "help", v2: "helped" },
+            { v1: "clean", v2: "cleaned" },
+            { v1: "visit", v2: "visited" },
+            { v1: "share", v2: "shared" },
+            { v1: "give", v2: "gave" },
+            { v1: "go", v2: "went" },
+            { v1: "bring", v2: "brought" },
+            { v1: "see", v2: "saw" }
+        ];
+
+        let selectedV1 = null;
+        let selectedV2 = null;
+
+        function initVerbGame() {
+            const v1List = document.getElementById('verb1-list');
+            const v2List = document.getElementById('verb2-list');
+
+            // Shuffle Verb 2
+            const shuffledV2 = [...verbPairs].sort(() => Math.random() - 0.5);
+
+            v1List.innerHTML = verbPairs.map(item => `
+                <button onclick="selectV1('${item.v1}', this)" class="v1-btn w-full p-3 text-left rounded-xl border border-slate-200 font-semibold text-xs text-slate-700 bg-slate-50 hover:bg-purple-50 transition">
+                    Verb 1: <span class="font-bold text-purple-700">${item.v1}</span>
+                </button>
+            `).join('');
+
+            v2List.innerHTML = shuffledV2.map(item => `
+                <button onclick="selectV2('${item.v2}', this)" class="v2-btn w-full p-3 text-left rounded-xl border border-slate-200 font-semibold text-xs text-slate-700 bg-slate-50 hover:bg-purple-50 transition">
+                    Verb 2: <span class="font-bold text-indigo-700">${item.v2}</span>
+                </button>
+            `).join('');
+
+            document.getElementById('verb-game-feedback').classList.add('hidden');
+        }
+
+        function selectV1(val, btn) {
+            document.querySelectorAll('.v1-btn').forEach(b => b.classList.remove('border-purple-500', 'bg-purple-100'));
+            btn.classList.add('border-purple-500', 'bg-purple-100');
+            selectedV1 = val;
+            checkMatch();
+        }
+
+        function selectV2(val, btn) {
+            document.querySelectorAll('.v2-btn').forEach(b => b.classList.remove('border-indigo-500', 'bg-indigo-100'));
+            btn.classList.add('border-indigo-500', 'bg-indigo-100');
+            selectedV2 = val;
+            checkMatch();
+        }
+
+        function checkMatch() {
+            if (selectedV1 && selectedV2) {
+                const pair = verbPairs.find(p => p.v1 === selectedV1);
+                const feedback = document.getElementById('verb-game-feedback');
+                feedback.classList.remove('hidden');
+
+                if (pair && pair.v2 === selectedV2) {
+                    feedback.className = "mt-4 p-3 rounded-xl text-center text-xs font-bold bg-emerald-100 text-emerald-800 border border-emerald-300";
+                    feedback.innerHTML = `<i class="fa-solid fa-circle-check mr-1"></i> Great Match! "${selectedV1}" -> "${selectedV2}"`;
+                } else {
+                    feedback.className = "mt-4 p-3 rounded-xl text-center text-xs font-bold bg-rose-100 text-rose-800 border border-rose-300";
+                    feedback.innerHTML = `<i class="fa-solid fa-circle-xmark mr-1"></i> Not matched! Try again.`;
+                }
+
+                progressState.pastTenseDone = true;
+                updateProgressBar();
+            }
+        }
+
+        function resetVerbGame() {
+            selectedV1 = null;
+            selectedV2 = null;
+            initVerbGame();
+        }
+
+        const dialoguesData = {
+            1: {
+                title: "Dialogue 1: Offering Help",
+                script: `<b>Student A:</b> "Are you okay?"<br><b>Student B:</b> "I'm not feeling well."<br><b>Student A:</b> "Can I help you?"<br><b>Student B:</b> "Yes, please. Thank you."`,
+                questions: [
+                    { q: "How is Student B feeling?", opts: ["Feeling happy", "Not feeling well", "Feeling excited", "Feeling angry"], ans: 1 },
+                    { q: "What does Student A offer?", opts: ["To lend money", "Can I help you?", "To go home", "To eat lunch"], ans: 1 }
+                ]
+            },
+            2: {
+                title: "Dialogue 2: Dropped Books",
+                script: `<b>Student A:</b> "What happened?"<br><b>Student B:</b> "I dropped my books."<br><b>Student A:</b> "Don't worry. I can help you."<br><b>Student B:</b> "That's very kind of you."`,
+                questions: [
+                    { q: "What happened to Student B?", opts: ["Lost a pencil", "Dropped books", "Forgot homework", "Broke a ruler"], ans: 1 },
+                    { q: "What expression did Student A use?", opts: ["Don't worry. I can help you.", "Good morning.", "See you tomorrow.", "No problem."], ans: 0 }
+                ]
+            },
+            3: {
+                title: "Dialogue 3: Showing Empathy",
+                script: `<b>Student A:</b> "You look sad."<br><b>Student B:</b> "My cat is sick."<br><b>Student A:</b> "I'm sorry to hear that. Can I visit your house later?"<br><b>Student B:</b> "Yes, thank you."`,
+                questions: [
+                    { q: "Why is Student B sad?", opts: ["Lost money", "Cat is sick", "Bad test score", "Missed the bus"], ans: 1 },
+                    { q: "How did Student A express empathy?", opts: ["I'm sorry to hear that.", "Congratulations!", "You are lazy.", "Let's play."], ans: 0 }
+                ]
+            }
+        };
+
+        let currentDlgId = 1;
+
+        function selectDialogue(id) {
+            currentDlgId = id;
+            const dlg = dialoguesData[id];
+            document.getElementById('current-dialogue-title').textContent = dlg.title;
+            document.getElementById('dialogue-transcript-box').innerHTML = dlg.script;
+
+            // Render Questions
+            const qBox = document.getElementById('listening-quiz-box');
+            qBox.innerHTML = `
+                <h4 class="font-bold text-sm text-slate-800 border-b border-slate-100 pb-2">Dialogue Comprehension</h4>
+                ${dlg.questions.map((qObj, idx) => `
+                    <div class="space-y-1 text-xs">
+                        <p class="font-semibold text-slate-700">${idx + 1}. ${qObj.q}</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                            ${qObj.opts.map((opt, oIdx) => `
+                                <button onclick="checkListeningAns(${oIdx}, ${qObj.ans}, this)" class="p-2 rounded-lg bg-slate-50 hover:bg-amber-50 border border-slate-200 text-left transition font-medium">
+                                    ${opt}
+                                </button>
+                            `).join('')}
+                        </div>
+                    </div>
+                `).join('')}
+            `;
+
+            progressState.listeningDone = true;
+            updateProgressBar();
+        }
+
+        function playCurrentDialogue() {
+            const rawText = dialoguesData[currentDlgId].script.replace(/<[^>]*>/g, '');
+            speakWord(rawText);
+        }
+
+        function stopDialogueAudio() {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+            }
+        }
+
+        function checkListeningAns(selected, correct, btn) {
+            if (selected === correct) {
+                btn.className = "p-2 rounded-lg bg-emerald-100 text-emerald-800 border border-emerald-300 text-left font-bold text-xs";
+            } else {
+                btn.className = "p-2 rounded-lg bg-rose-100 text-rose-800 border border-rose-300 text-left font-bold text-xs";
+            }
+        }
+
+        const speakingPrompts = {
+            1: "I forgot my pen and feel worried.",
+            2: "I fell down in the school yard and hurt my knee.",
+            3: "My groceries bags are very heavy.",
+            4: "Our classroom is full of trash and dust."
+        };
+
+        let speakingTimer = null;
+
+        function selectSpeakingCard(id) {
+            document.querySelectorAll('.speak-card').forEach(c => c.className = "speak-card p-4 bg-white border border-slate-200 rounded-2xl shadow-sm cursor-pointer hover:border-indigo-400 transition");
+            const activeCard = document.getElementById('speak-card-' + id);
+            if (activeCard) activeCard.className = "speak-card p-4 bg-white border-2 border-indigo-500 rounded-2xl shadow-sm cursor-pointer hover:border-indigo-600 transition";
+
+            document.getElementById('speak-prompt-need').textContent = speakingPrompts[id];
+        }
+
+        function startSpeakingTimer() {
+            let seconds = 45;
+            const display = document.getElementById('speaking-timer-display');
+            if (speakingTimer) clearInterval(speakingTimer);
+
+            speakingTimer = setInterval(() => {
+                seconds--;
+                display.textContent = `00:${seconds < 10 ? '0' : ''}${seconds}`;
+                if (seconds <= 0) {
+                    clearInterval(speakingTimer);
+                    display.textContent = "Time's Up!";
+                }
+            }, 1000);
+        }
+
+        function markSpeakingDone() {
+            progressState.speakingDone = true;
+            updateProgressBar();
+            alert("Speaking practice marked as completed!");
+        }
+
+        function generateStoryDraft() {
+            const when = document.getElementById('builder-when').value;
+            const where = document.getElementById('builder-where').value;
+            const who = document.getElementById('builder-who').value;
+            const what = document.getElementById('builder-what').value;
+            const action = document.getElementById('builder-action').value;
+            const feel = document.getElementById('builder-feel').value;
+
+            const draft = `Title: My Good Deed Story\n\n[Orientation]\n${when}, I was ${where}. I saw ${who} who ${what}.\n\n[Events]\nFirst, I approached ${who} and offered my assistance. Then, I ${action}. We worked together nicely until everything was resolved.\n\n[Reorientation]\nFinally, ${who} smiled and thanked me. I felt very ${feel} after helping someone in need.`;
+
+            document.getElementById('builder-draft-box').textContent = draft;
+            progressState.storyBuilderDone = true;
+            updateProgressBar();
+        }
+
+        function transferDraftToWriting() {
+            const text = document.getElementById('builder-draft-box').textContent;
+            if (text.includes("Klik tombol")) {
+                alert("Silakan buat draf terlebih dahulu!");
+                return;
+            }
+            document.getElementById('writing-title').value = "My Good Deed Story";
+            document.getElementById('writing-content').value = text;
+            switchTab('writing');
+        }
+
+        function checkStoryStructure() {
+            const content = document.getElementById('writing-content').value.trim();
+            const title = document.getElementById('writing-title').value.trim();
+
+            const wordCount = content ? content.split(/\s+/).length : 0;
+            document.getElementById('word-count-display').textContent = `Word count: ${wordCount} words`;
+
+            let feedbackHtml = "";
+
+            // Check Title
+            feedbackHtml += `
+                <div class="p-2.5 rounded-lg border ${title ? 'bg-emerald-50 border-emerald-200 text-emerald-800' : 'bg-rose-50 border-rose-200 text-rose-800'}">
+                    <i class="fa-solid ${title ? 'fa-check' : 'fa-xmark'} mr-1"></i> Title: ${title ? 'Present' : 'Missing'}
+                </div>
+            `;
+
+            // Check Length
+            feedbackHtml += `
+                <div class="p-2.5 rounded-lg border ${wordCount >= 60 ? 'bg-emerald-50 border-emerald-200 text-emerald-800' : 'bg-amber-50 border-amber-200 text-amber-800'}">
+                    <i class="fa-solid ${wordCount >= 60 ? 'fa-check' : 'fa-exclamation'} mr-1"></i> Length: ${wordCount} words ${wordCount < 60 ? '(Try to write at least 80 words)' : '(Good length)'}
+                </div>
+            `;
+
+            // Check Simple Past Verb Keywords
+            const pastVerbs = ['helped', 'cleaned', 'visited', 'shared', 'gave', 'went', 'saw', 'brought', 'carried', 'felt', 'was', 'were'];
+            const foundVerbs = pastVerbs.filter(v => content.toLowerCase().includes(v));
+
+            feedbackHtml += `
+                <div class="p-2.5 rounded-lg border ${foundVerbs.length >= 2 ? 'bg-emerald-50 border-emerald-200 text-emerald-800' : 'bg-amber-50 border-amber-200 text-amber-800'}">
+                    <i class="fa-solid fa-clock-rotate-left mr-1"></i> Past Verbs Detected: ${foundVerbs.length > 0 ? foundVerbs.join(', ') : 'None detected'}
+                </div>
+            `;
+
+            // Check Sequence Words
+            const sequenceWords = ['first', 'then', 'after', 'finally', 'next', 'last'];
+            const foundSeq = sequenceWords.filter(s => content.toLowerCase().includes(s));
+
+            feedbackHtml += `
+                <div class="p-2.5 rounded-lg border ${foundSeq.length >= 1 ? 'bg-emerald-50 border-emerald-200 text-emerald-800' : 'bg-slate-50 border-slate-200 text-slate-700'}">
+                    <i class="fa-solid fa-list-ol mr-1"></i> Sequence Words: ${foundSeq.length > 0 ? foundSeq.join(', ') : 'Add words like First, Then, Finally'}
+                </div>
+            `;
+
+            document.getElementById('story-check-results').innerHTML = feedbackHtml;
+            progressState.writingDone = true;
+            updateProgressBar();
+        }
+
+        function saveStudentStory() {
+            alert("Your story has been saved locally!");
+        }
+
+        function openGoogleDocs() {
+            window.open(GOOGLE_DOCS_URL, '_blank');
+        }
+
+        const quizQuestions = [
+            { q: "What is the main purpose of Recount Text?", opts: ["To retell past events or experiences", "To explain how to make something", "To describe a person", "To persuade readers to buy something"], ans: 0 },
+            { q: "Which structure member introduces Who, When, and Where?", opts: ["Events", "Reorientation", "Orientation", "Complication"], ans: 2 },
+            { q: "What comes after Orientation in a Recount Text?", opts: ["Resolution", "Events", "Reorientation", "Title"], ans: 1 },
+            { q: "Which tense is mainly used in Recount Text?", opts: ["Simple Present Tense", "Simple Future Tense", "Simple Past Tense", "Present Continuous Tense"], ans: 2 },
+            { q: "What is the Verb 2 form of 'help'?", opts: ["helping", "helped", "helps", "helper"], ans: 1 },
+            { q: "What is the Verb 2 form of 'give'?", opts: ["gived", "gives", "gave", "giving"], ans: 2 },
+            { q: "What is the Verb 2 form of 'go'?", opts: ["went", "goed", "gone", "going"], ans: 0 },
+            { q: "Select the correct negative Simple Past sentence:", opts: ["I did not helped my friend.", "I did not help my friend.", "I do not helped my friend.", "I didn't helping my friend."], ans: 1 },
+            { q: "Select the correct interrogative sentence:", opts: ["Did you visited your grandmother?", "Did you visit your grandmother?", "Do you visited your grandmother?", "Were you visit your grandmother?"], ans: 1 },
+            { q: "A: 'What happened?' - B: 'I dropped my books.' - A: '___________'", opts: ["Good morning.", "Don't worry. I can help you.", "I like books.", "See you later."], ans: 1 },
+            { q: "Which word means 'suka membantu' in Indonesian?", opts: ["generous", "helpful", "friendly", "caring"], ans: 1 },
+            { q: "Which word means 'mendonasi' in English?", opts: ["donate", "volunteer", "support", "comfort"], ans: 0 },
+            { q: "What WH-word asks about LOCATION?", opts: ["When", "Who", "Where", "Why"], ans: 2 },
+            { q: "What WH-word asks about TIME?", opts: ["Where", "When", "What", "How"], ans: 1 },
+            { q: "Reorientation in Recount Text usually contains:", opts: ["The problem", "The personal feeling or comment of the writer", "List of ingredients", "Arguments"], ans: 1 },
+            { q: "Which of the following is an irregular verb?", opts: ["clean -> cleaned", "visit -> visited", "see -> saw", "support -> supported"], ans: 2 },
+            { q: "Complete: 'Yesterday, we ________ the dirty classroom together.'", opts: ["cleans", "cleaning", "cleaned", "clean"], ans: 2 },
+            { q: "A: 'My cat is sick.' - B: '___________'", opts: ["I'm sorry to hear that.", "Congratulations!", "Thank you very much.", "You're welcome."], ans: 0 },
+            { q: "Which sentence shows empathy?", opts: ["Can I help you carry those bags?", "Go away.", "I don't care.", "Do it yourself."], ans: 0 },
+            { q: "What sequence connector marks the final ending?", opts: ["First", "Finally", "Then", "Next"], ans: 1 }
+        ];
+
+        function renderQuiz() {
+            const container = document.getElementById('quiz-questions-container');
+            container.innerHTML = quizQuestions.map((q, idx) => `
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+                    <p class="font-bold text-slate-800 text-sm"><span class="text-teal-600 mr-1">${idx + 1}.</span> ${q.q}</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                        ${q.opts.map((opt, oIdx) => `
+                            <label class="flex items-center space-x-2.5 p-3 rounded-xl border border-slate-200 hover:bg-slate-50 cursor-pointer transition">
+                                <input type="radio" name="quiz-q-${idx}" value="${oIdx}" class="text-teal-600 focus:ring-teal-500">
+                                <span class="text-slate-700 font-medium">${String.fromCharCode(65 + oIdx)}. ${opt}</span>
+                            </label>
+                        `).join('')}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function submitQuiz() {
+            let correct = 0;
+            quizQuestions.forEach((q, idx) => {
+                const selected = document.querySelector(`input[name="quiz-q-${idx}"]:checked`);
+                if (selected && parseInt(selected.value) === q.ans) {
+                    correct++;
+                }
+            });
+
+            const total = quizQuestions.length;
+            const scorePct = Math.round((correct / total) * 100);
+            progressState.quizScore = scorePct;
+            progressState.quizDone = true;
+            updateProgressBar();
+
+            // Render Results
+            document.getElementById('quiz-result-card').classList.remove('hidden');
+            document.getElementById('quiz-score-display').textContent = scorePct + "%";
+            document.getElementById('quiz-correct-count').textContent = correct;
+            document.getElementById('quiz-wrong-count').textContent = total - correct;
+            document.getElementById('quiz-points-count').textContent = `${scorePct}/100`;
+
+            let feedbackTitle = "";
+            let grade = "A";
+            if (scorePct >= 90) { feedbackTitle = "Excellent! Outstanding performance!"; grade = "A+"; }
+            else if (scorePct >= 75) { feedbackTitle = "Very Good! Keep up the great work!"; grade = "A"; }
+            else if (scorePct >= 60) { feedbackTitle = "Good Job! Keep practicing!"; grade = "B"; }
+            else { feedbackTitle = "Keep Learning and Try Again!"; grade = "C"; }
+
+            document.getElementById('quiz-feedback-title').textContent = feedbackTitle;
+            document.getElementById('quiz-grade-label').textContent = grade;
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function resetQuiz() {
+            document.getElementById('quiz-result-card').classList.add('hidden');
+            renderQuiz();
+        }
+
+        function submitFinalDataToSheets() {
+            const statusMsg = document.getElementById('sync-status-msg');
+            statusMsg.textContent = "Submitting learning progress to teacher...";
+
+            const payload = {
+                studentName: currentStudent.name,
+                studentClass: currentStudent.class,
+                date: new Date().toLocaleDateString('id-ID'),
+                readingScore: progressState.readingDone ? 100 : 0,
+                listeningScore: progressState.listeningDone ? 100 : 0,
+                grammarScore: progressState.pastTenseDone ? 100 : 0,
+                vocabScore: progressState.vocabDone ? 100 : 0,
+                quizScore: progressState.quizScore,
+                writingScore: progressState.writingDone ? 100 : 0,
+                speakingScore: progressState.speakingDone ? 100 : 0,
+                finalScore: Math.round((progressState.quizScore + (progressState.writingDone ? 100 : 0)) / 2),
+                reflection: document.getElementById('ref-q1').value + " | " + document.getElementById('ref-q2').value
+            };
+
+            if (!GOOGLE_SHEETS_URL) {
+                statusMsg.className = "text-xs text-center font-semibold text-amber-600";
+                statusMsg.textContent = "Local Submission Complete! (Note: Teacher Google Sheets URL is not configured yet).";
+                progressState.reflectionDone = true;
+                updateProgressBar();
+                return;
+            }
+
+            fetch(GOOGLE_SHEETS_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            }).then(() => {
+                statusMsg.className = "text-xs text-center font-semibold text-emerald-600";
+                statusMsg.textContent = "Data successfully submitted to Google Sheets!";
+                progressState.reflectionDone = true;
+                updateProgressBar();
+            }).catch(err => {
+                statusMsg.className = "text-xs text-center font-semibold text-rose-600";
+                statusMsg.textContent = "Submission failed: " + err.toString();
+            });
+        }
+
+        function saveIntegrationURLs() {
+            const sheetsUrl = document.getElementById('config-sheets-url').value.trim();
+            const docsUrl = document.getElementById('config-docs-url').value.trim();
+
+            GOOGLE_SHEETS_URL = sheetsUrl;
+            GOOGLE_DOCS_URL = docsUrl || "https://docs.google.com";
+
+            localStorage.setItem('cfg_sheets_url', GOOGLE_SHEETS_URL);
+            localStorage.setItem('cfg_docs_url', GOOGLE_DOCS_URL);
+
+            alert("Integration URLs updated!");
+        }
+
+        window.onload = function() {
+            if (!localStorage.getItem('student_info')) {
+                openStudentModal();
+            } else {
+                document.getElementById('display-student-name').textContent = `${currentStudent.name} (${currentStudent.class})`;
+            }
+
+            // Init Sub-modules
+            showStory(1);
+            renderVocabCards(vocabList);
+            initVerbGame();
+            selectDialogue(1);
+            selectSpeakingCard(1);
+            renderQuiz();
+            updateProgressBar();
+
+            // Load saved settings
+            document.getElementById('config-sheets-url').value = GOOGLE_SHEETS_URL;
+            document.getElementById('config-docs-url').value = GOOGLE_DOCS_URL;
+        };
+    </script>
+</body>
+</html>
